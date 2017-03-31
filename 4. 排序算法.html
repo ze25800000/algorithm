@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr = [12, 4, 435, 1, 54, 65, 2, 3, 2, 57, 87, 567, 4567, 345, 567, 5467];
+    //    Array.prototype.bubbleSort = function () {
+    //        return this.sort((a, b) => {
+    //            if (a > b) {
+    //                return 1;
+    //            } else if (a == b) {
+    //                return 0;
+    //            } else {
+    //                return -1;
+    //            }
+    //        });
+    //    }
+    //    function bubbleSort2(arr) {
+    //        var tmp;
+    //        for (var i = 0; i < arr.length; i++) {
+    //            for (var j = 0; j < arr.length; j++) {
+    //                if (arr[i] > arr[j]) {
+    //                    tmp = arr[j];
+    //                    arr[j] = arr[i];
+    //                    arr[i] = tmp;
+    //                }
+    //            }
+    //        }
+    //        return arr;
+    //    }
+    function bubbleSort3(arr) {
+        if (arr.length <= 1) {
+            return arr;
+        }
+        var left = [];
+        var right = [];
+        var random = arr[0];
+        for (var i = 1; i < arr.length; i++) {
+
+            if (arr[i] < random) {
+                left.push(arr[i]);
+            } else {
+                right.push(arr[i]);
+            }
+        }
+        return [].concat(bubbleSort3(left), [random], bubbleSort3(right));
+    }
+</script>
+</body>
+</html>

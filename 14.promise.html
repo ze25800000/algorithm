@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    function ajax(url, fnSucc, fnFail) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', url, true);
+        xhr.send();
+        xhr.onload = function () {
+            console.log(xhr.readyState);
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                fnSucc(xhr.responseText);
+            } else {
+                fnFail(xhr.status);
+            }
+        }
+    }
+    window.onload = function () {
+        let btn = document.querySelector('button');
+        let div = document.querySelector('div');
+        btn.onclick = function () {
+            var p = new Promise((resolve, reject) => {
+                ajax('14.promise.txt',
+                    (str) => {
+                        resolve(str);
+                    },
+                    (str) => {
+                        reject(str);
+                    });
+            });
+            p.then((str) => {
+                div.innerHTML = str;
+            }, (str => {
+                div.innerHTML = str;
+            }))
+        }
+    }
+</script>
+<body>
+<button>button</button>
+<div></div>
+</body>
+</html>

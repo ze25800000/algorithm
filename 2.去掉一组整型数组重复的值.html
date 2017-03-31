@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>去掉一组整型数组重复的值</title>
+</head>
+<body>
+<script>
+    var arr = [1, 2, 3, 4, 4, 5, 5, 6];
+    function repeat1(arr) {
+        var obj = {};
+        for (var i = 0; i < arr.length; i++) {
+            obj[arr[i]] = i;
+        }
+        var a = [];
+        for (var k in obj) {
+            a.push(k);
+        }
+        return a;
+    }
+    function repeat2(arr) {
+        var o = {};
+        for (var i = 0; i < arr.length; i++) {
+            o[arr[i]] = i;
+        }
+        return Object.keys(o);
+    }
+    function repeat3(arr) {
+        var a = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (a.indexOf(arr[i]) == -1) {
+                a.push(arr[i]);
+            }
+        }
+        return a;
+    }
+</script>
+</body>
+</html>

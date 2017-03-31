@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>统计一个字符串出现最多的字母</title>
+</head>
+<body>
+<script>
+    var str = 'afjghdfraaaasdenas ';
+    function findMaxDuplicateChar(s) {
+        var o = {};
+        for (var i = 0; i < str.length; i++) {
+            if (!o[str.charAt(i)]) {
+                o[str.charAt(i)] = 1;
+            } else {
+                o[str.charAt(i)] += 1;
+            }
+        }
+        var maxIndex = 0;
+        var max = '';
+        for (k in o) {
+            if (o[k] > maxIndex) {
+                maxIndex = o[k];
+                max = k;
+            }
+        }
+        return max
+    }
+</script>
+</body>
+</html>
