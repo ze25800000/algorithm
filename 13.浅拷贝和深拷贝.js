@@ -1,9 +1,3 @@
-var Chinese = {
-    nation: '中国'
-};
-var Doctor = {
-    career: '医生'
-};
 function extendCopy(obj) {
     var c = {};
     for (var i in obj) {
@@ -11,18 +5,19 @@ function extendCopy(obj) {
     }
     return c;
 }
-
+/*******************深拷贝*********************/
 /*
- function Person() {
- this.name = 1;
+ var deepCopy = function (source) {
+ var result = {};
+ for (var key in source) {
+ result[key] = typeof source[key] ==='object'? deepCoyp(source[key]) : source[key];
  }
- Person.prototype.age = 123;
-
- var o = new Person();
-
- for (var i in o) {
- if (!o.hasOwnProperty(i)) {
- continue;
- }
- console.log(i);
+ return result;
  }*/
+var deepCopy = function (source) {
+    var result = {};
+    for (var key in source) {
+        result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key];
+    }
+    return result;
+}
